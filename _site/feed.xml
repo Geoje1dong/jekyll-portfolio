@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-12-19T20:40:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">config점yml의 title 입니다.</title><subtitle>config점yml의 description 입니다.
+</subtitle><entry><title type="html">테스트2</title><link href="http://localhost:4000/2017/09/26/1231202/" rel="alternate" type="text/html" title="테스트2" /><published>2017-09-26T00:00:00+09:00</published><updated>2017-09-26T00:00:00+09:00</updated><id>http://localhost:4000/2017/09/26/1231202</id><content type="html" xml:base="http://localhost:4000/2017/09/26/1231202/">&lt;p&gt;테스트 2222&lt;/p&gt;</content><author><name></name></author><category term="project" /><summary type="html">테스트 2222</summary></entry><entry><title type="html">테스트3</title><link href="http://localhost:4000/2017/09/26/123123/" rel="alternate" type="text/html" title="테스트3" /><published>2017-09-26T00:00:00+09:00</published><updated>2017-09-26T00:00:00+09:00</updated><id>http://localhost:4000/2017/09/26/123123</id><content type="html" xml:base="http://localhost:4000/2017/09/26/123123/">&lt;p&gt;테스트 333&lt;/p&gt;</content><author><name></name></author><category term="project" /><summary type="html">테스트 333</summary></entry><entry><title type="html">테스트1</title><link href="http://localhost:4000/2017/09/26/welcome-to-jekyll/" rel="alternate" type="text/html" title="테스트1" /><published>2017-09-26T00:00:00+09:00</published><updated>2017-09-26T00:00:00+09:00</updated><id>http://localhost:4000/2017/09/26/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/2017/09/26/welcome-to-jekyll/">&lt;p&gt;테스트 11111&lt;/p&gt;</content><author><name></name></author><category term="project" /><summary type="html">테스트 11111</summary></entry><entry><title type="html">팔로우온 서비스</title><link href="http://localhost:4000/2017/09/26/khaiii/" rel="alternate" type="text/html" title="팔로우온 서비스" /><published>2017-09-26T00:00:00+09:00</published><updated>2017-09-26T00:00:00+09:00</updated><id>http://localhost:4000/2017/09/26/khaiii</id><content type="html" xml:base="http://localhost:4000/2017/09/26/khaiii/">&lt;h2 id=&quot;기존-여행자들이-찾아둔-항공권을-모아서-보여주는-서비스&quot;&gt;기존 여행자들이 찾아둔 항공권을 모아서 보여주는 서비스&lt;/h2&gt;
+&lt;p&gt;2017.07.03 ~ 2017.09.26&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Frontend (HTML5, CSS3, SPA, Angular, Typescript, Ngrx)&lt;/li&gt;
+  &lt;li&gt;Backend (Java, Spring Framework)&lt;/li&gt;
+  &lt;li&gt;서비스 이후 복잡한 여정 발권 증가&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;이미지&quot;&gt;이미지&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/팔로우온_지도.png&quot; alt=&quot;팔로우온_지도&quot; /&gt;
+&lt;img src=&quot;/assets/images/팔로우온_지도_2.png&quot; alt=&quot;팔로우온_지도&quot; /&gt;
+&lt;img src=&quot;/assets/images/팔로우온_지도_3.png&quot; alt=&quot;팔로우온_지도&quot; /&gt;
+&lt;img src=&quot;/assets/images/팔로우온_지도_4.png&quot; alt=&quot;팔로우온_지도&quot; /&gt;
+&lt;img src=&quot;/assets/images/팔로우온_지도_5.png&quot; alt=&quot;팔로우온_지도&quot; /&gt;
+&lt;img src=&quot;/assets/images/팔로우온_지도_6.png&quot; alt=&quot;팔로우온_지도&quot; /&gt;
+&lt;img src=&quot;/assets/images/팔로우온_모바일.png&quot; alt=&quot;팔로우온_모바일&quot; /&gt;
+&lt;img src=&quot;/assets/images/팔로우온_모바일_2.png&quot; alt=&quot;팔로우온_모바일&quot; /&gt;
+&lt;img src=&quot;/assets/images/팔로우온_모바일_3.png&quot; alt=&quot;팔로우온_모바일&quot; /&gt;
+&lt;img src=&quot;/assets/images/팔로우온_모바일_4.png&quot; alt=&quot;팔로우온_모바일&quot; /&gt;
+&lt;img src=&quot;/assets/images/팔로우온_모바일_5.png&quot; alt=&quot;팔로우온_모바일&quot; /&gt;
+&lt;img src=&quot;/assets/images/팔로우온_모바일_6.png&quot; alt=&quot;팔로우온_모바일&quot; /&gt;&lt;/p&gt;
+&lt;figcaption class=&quot;caption&quot;&gt;팔로우온 서비스&lt;/figcaption&gt;</content><author><name></name></author><category term="project" /><summary type="html">기존 여행자들이 찾아둔 항공권을 모아서 보여주는 서비스 2017.07.03 ~ 2017.09.26 Frontend (HTML5, CSS3, SPA, Angular, Typescript, Ngrx) Backend (Java, Spring Framework) 서비스 이후 복잡한 여정 발권 증가 이미지 팔로우온 서비스</summary></entry></feed>

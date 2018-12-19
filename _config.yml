@@ -1,0 +1,48 @@
+title: config점yml의 title 입니다.
+email: wogus000128@gmail.com
+description: |
+  config점yml의 description 입니다.
+baseurl: ''
+url: ''
+timezone: Asia/Seoul
+
+repository: Geoje1dong/Geoje1dong.github.io
+
+permalink: /:year/:month/:day/:title/
+
+excerpt_separator: <!--more-->
+
+markdown: kramdown
+
+krandown:
+  input: GFM
+  highlighter: rouge
+
+
+# collection 사용 참조링크:https://jekyllrb-ko.github.io/docs/collections/
+collections:
+  work:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: work
+    values:
+      layout: post
+
+
+#jekyll 페이지 나누기 참조링크:https://jekyllrb-ko.github.io/docs/pagination/
+plugins:
+  - jekyll-paginate
+
+paginate: 5
+paginate_path: '/page/:num/'
+
+projects: true
+work: true
+exclude: [README.md, Gemfile, Gemfile.lock]
+
+keep_files: [assets, files]
+github: [metadata]
+asset_url: /assets
