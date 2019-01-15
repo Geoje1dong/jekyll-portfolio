@@ -60,26 +60,54 @@
     </div>
   </div>
   <div class="workBox">
-    <script>
-  function contentClose(){
-    alert('a');
-  }
-</script>
-
-
-
-<div id="work-content">
+    <div id="work-content">
 	<div class="content_box"></div>
 	<button onClick="contentClose();">닫기</button>
 </div>
 
-
 <div id="mainContent">
 	Hello-World
-	<table>
+  <table>
 
-	</table>
+  </table>
 </div>
+
+<script src="/assets/lib/jquery-1.12.0.min.js"></script>
+<script>
+  $(document).ready(function(){
+      $.ajax({
+        url : "/work/test.json",
+        dataType : "json",
+        success : function(data){
+          $("table").html("<tr><th>번호</th><th>이름</th><th>나이</th><th>사는곳</th></tr>");
+          var show = "";
+          $.each(data,function(index, item){
+              show += "<tr><td>"+(index+1)+"</td>";
+              show += "<td>"+item.name+"</td>";
+              show += "<td>"+item.age+"</td>";
+              show += "<td>"+item.loc+"</td>";
+              show += "<td><button onClick=abs("+(index+1)+");>"+item.loc+"이것이다요</button></td></tr>";
+          });
+          $("table").append(show);
+        }
+      });
+    });
+    function abs(listNumber){
+    	$.ajax({
+        url : "/work/work"+listNumber+".html",
+        dataType : "html",
+        success : function(data){
+          alert('list'+listNumber);
+          $('#work-content>.content_box').append(data);
+				  $('#work-content').addClass('active');
+        }
+      });
+    };
+    function contentClose(){
+		  $('#work-content').removeClass('active');
+		  $('#work-content>.content_box').empty();
+    }
+</script>
 
   </div>
 </div>
@@ -116,6 +144,6 @@
 <script src="/assets/lib/jquery-1.12.0.min.js"></script>
 <script src="/assets/lib/jquery.magnific-popup.min.js"></script>
 <script src="/assets/js/index.js"></script>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </body>
 </html>
