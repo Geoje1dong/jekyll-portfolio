@@ -47,3 +47,4 @@ keep_files: [assets, files]
 github: [metadata]
 asset_url: /assets
 work_url: /work
+img_url: /assets/images

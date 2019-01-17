@@ -2,35 +2,42 @@
 layout: home
 title: Home
 ---
-<div id="work-content">
+<div id="work-list">
+	<div id="scrolling" class="scrolling-wrapper-flexbox content horizontal-images mCustomScrollbar clearfix" style="width:100vw;">
+
+	</div>
+</div>
+
+<!-- <div id="work-content">
 	<div class="content_box"></div>
 	<button onClick="contentClose();">닫기</button>
-</div>
-
-<div id="mainContent">
-	Hello-World
-  <table>
-
-  </table>
-</div>
+</div> -->
 
 <script src="{{ site.asset_url }}/lib/jquery-1.12.0.min.js"></script>
 <script>
   $(document).ready(function(){
+		alert('a');
       $.ajax({
         url : "{{ site.work_url }}/test.json",
         dataType : "json",
         success : function(data){
-          $("table").html("<tr><th>번호</th><th>이름</th><th>나이</th><th>사는곳</th></tr>");
+					alert('c');
+          var card_wrap = $('#scrolling');
           var show = "";
           $.each(data,function(index, item){
-              show += "<tr><td>"+(index+1)+"</td>";
-              show += "<td>"+item.name+"</td>";
-              show += "<td>"+item.age+"</td>";
-              show += "<td>"+item.loc+"</td>";
-              show += "<td><button onClick=abs("+(index+1)+");>"+item.loc+"이것이다요</button></td></tr>";
+							show += '<div class="card">';
+							//show += '	<button class="thumb" onClick=abs(''+(index+1)+''); style="background-image:url(''+item.img+'');">';
+							show += '		<div class="info">';
+							show += '			<div class="name">';
+							// show += '				<h3>'+item.tit+'</h3>';
+							// show += '				<p>'+item.cnt+'</p>';
+							show += '			</div>';
+							show += '		</div>';
+							//show += '	</button>';
+							show += '</div>';
           });
-          $("table").append(show);
+
+          card_wrap.append(show);
         }
       });
     });

@@ -34,9 +34,9 @@
     </ul>
 </div>
 <!-- Script pointing to jekyll-search.js -->
-<script src="/dest/jekyll-search.js" type="text/javascript"></script>
+<!-- <script src="/dest/jekyll-search.js" type="text/javascript"></script> -->
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     SimpleJekyllSearch({
         searchInput: document.getElementById('search-input'),
         resultsContainer: document.getElementById('results-container'),
@@ -54,41 +54,49 @@
     <div id="mainContentWrap">
   <div id="mainContent">
     <div class="introBox">
-      <p>안녕하세요.</p>
+      <!-- <p>안녕하세요.</p>
       <p>UI UX 디자이너 <strong>김재현</strong> 입니다.</p>
-      <p>저의 <strong>포트폴리오</strong>에 오신것을 환영합니다.</p>
+      <p>저의 <strong>포트폴리오</strong>에 오신것을 환영합니다.</p> -->
+      <p>가로 스크롤 공부</p>
     </div>
   </div>
   <div class="workBox">
-    <div id="work-content">
+    <div id="work-list">
+	<div id="scrolling" class="scrolling-wrapper-flexbox content horizontal-images mCustomScrollbar clearfix" style="width:100vw;">
+
+	</div>
+</div>
+
+<!-- <div id="work-content">
 	<div class="content_box"></div>
 	<button onClick="contentClose();">닫기</button>
-</div>
-
-<div id="mainContent">
-	Hello-World
-  <table>
-
-  </table>
-</div>
+</div> -->
 
 <script src="/assets/lib/jquery-1.12.0.min.js"></script>
 <script>
   $(document).ready(function(){
+		alert('a');
       $.ajax({
         url : "/work/test.json",
         dataType : "json",
         success : function(data){
-          $("table").html("<tr><th>번호</th><th>이름</th><th>나이</th><th>사는곳</th></tr>");
+					alert('c');
+          var card_wrap = $('#scrolling');
           var show = "";
           $.each(data,function(index, item){
-              show += "<tr><td>"+(index+1)+"</td>";
-              show += "<td>"+item.name+"</td>";
-              show += "<td>"+item.age+"</td>";
-              show += "<td>"+item.loc+"</td>";
-              show += "<td><button onClick=abs("+(index+1)+");>"+item.loc+"이것이다요</button></td></tr>";
+							show += '<div class="card">';
+							//show += '	<button class="thumb" onClick=abs(''+(index+1)+''); style="background-image:url(''+item.img+'');">';
+							show += '		<div class="info">';
+							show += '			<div class="name">';
+							// show += '				<h3>'+item.tit+'</h3>';
+							// show += '				<p>'+item.cnt+'</p>';
+							show += '			</div>';
+							show += '		</div>';
+							//show += '	</button>';
+							show += '</div>';
           });
-          $("table").append(show);
+
+          card_wrap.append(show);
         }
       });
     });
