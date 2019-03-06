@@ -107,8 +107,7 @@ table {
   border-spacing: 0; }
 
 #work-list {
-  position: absolute;
-  top: 29%; }
+  position: absolute; }
   #work-list .card {
     float: left;
     width: 30vh;
@@ -141,8 +140,8 @@ table {
   width: 100vw;
   height: 100vh;
   position: absolute;
-  /*top:-9999999px;*/
-  top: 100%;
-  transition: all 0.5s ease; }
-  #work-content .active {
-    top: 0; }
+  top: 100vh;
+  transition: all 0.5s ease;
+  padding: 100px; }
+  #work-content.active {
+    top: -192px; }

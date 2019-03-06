@@ -1,5 +1,5 @@
 #work-list{
-  position:absolute;top: 29%;
+  position:absolute;
   .card {
     float:left;width:30vh;height: 30vh;margin: 10vh 2vh;opacity: 1;transform: matrix(1, 0, 0, 1, 0, 0);transition: all .6s;flex: 0 0 auto;
     .thumb{
@@ -25,10 +25,10 @@
 	width:100vw;
 	height:100vh;
 	position:absolute;
-	/*top:-9999999px;*/
-	top:100%;
+	top:100vh;
 	transition:all 0.5s ease;
-  .active{
-  	top:0;
+  padding:100px;
+  &.active{
+  	top:-192px;
   }
 }
