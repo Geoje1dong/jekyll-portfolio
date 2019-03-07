@@ -1,7 +1,12 @@
 #work-list{
   position:absolute;
+  #scrolling{
+    position:relative;
+    transition: all .1s;
+  }
+
   .card {
-    float:left;width:30vh;height: 30vh;margin: 10vh 2vh;opacity: 1;transform: matrix(1, 0, 0, 1, 0, 0);transition: all .6s;flex: 0 0 auto;
+    float:left;width:30vh;height: 30vh;padding: 10vh 2vh;opacity: 1;transform: matrix(1, 0, 0, 1, 0, 0);transition: all .6s;flex: 0 0 auto; box-sizing:content-box;
     .thumb{
       width:30vh; height:30vh; background-size: cover; border-radius: 50%; background-position: center;
       .info{

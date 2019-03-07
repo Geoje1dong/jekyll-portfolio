@@ -108,15 +108,19 @@ table {
 
 #work-list {
   position: absolute; }
+  #work-list #scrolling {
+    position: relative;
+    transition: all .1s; }
   #work-list .card {
     float: left;
     width: 30vh;
     height: 30vh;
-    margin: 10vh 2vh;
+    padding: 10vh 2vh;
     opacity: 1;
     transform: matrix(1, 0, 0, 1, 0, 0);
     transition: all .6s;
-    flex: 0 0 auto; }
+    flex: 0 0 auto;
+    box-sizing: content-box; }
     #work-list .card .thumb {
       width: 30vh;
       height: 30vh;

@@ -3,7 +3,7 @@ layout: home
 title: Home
 ---
 <div id="work-list">
-	<div id="scrolling" class="scrolling-wrapper-flexbox content horizontal-images mCustomScrollbar clearfix" style="width:100vw;">
+	<div id="scrolling" class="clearfix" style="width:100vw;">
 	</div>
 </div>
 
@@ -37,7 +37,10 @@ title: Home
 				cardWidth();
       },
     });
+		Scrolling();
   });
+
+
   function abs(listNumber){
   	$.ajax({
       url : "{{ site.work_url }}/work"+listNumber+".html",
@@ -54,10 +57,40 @@ title: Home
 	  $('#work-content>.content_box').empty();
   }
 
+
+	let scrollingTarget = document.getElementById('scrolling')
+	let scrollPostion = 0;
+	let horizontalWidth  = 0;
 	function cardWidth(){
 		let totalCard = $('.card').length;
 		let widthCard = $('.card').outerWidth();
-		let totalWidth = widthCard*widthCard;
-		document.getElementById('scrolling').style.width = totalWidth+ 'px';
+		horizontalWidth = widthCard*totalCard;
+		scrollingTarget.style.width = horizontalWidth+ 'px';
+	}
+	function Scrolling(){
+
+		if(scrollPostion > 120){
+			scrollPostion = 0;
+			console.log('a');
+		}else if(scrollPostion < -horizontalWidth-120){
+			scrollPostion = -horizontalWidth - 240;
+			console.log('b');
+		}else{
+			$(window).bind('mousewheel', function(event) {
+				scrollPostion += event.originalEvent.wheelDelta;
+				setTranslate(scrollPostion, scrollingTarget)
+				console.log('c');
+			});
+		}
+	}
+
+	function setTranslate(xPos, el){
+		el.style.transform = `translate3d(${xPos}px, 0, 0)`;
+		if(xPos > 1){
+			xPos = 1;
+		}else if(xPos < -horizontalWidth){
+			xPos = -horizontalWidth;
+		}
+		//console.log(xPos);
 	}
 </script>
