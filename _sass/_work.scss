@@ -1,10 +1,4 @@
 #work-list{
-  position:absolute;
-  #scrolling{
-    position:relative;
-    transition: all .1s;
-  }
-
   .card {
     float:left;width:30vh;height: 30vh;padding: 10vh 2vh;opacity: 1;transform: matrix(1, 0, 0, 1, 0, 0);transition: all .6s;flex: 0 0 auto; box-sizing:content-box;
     .thumb{
@@ -26,6 +20,7 @@
 
 
 #work-content{
+  display:none;
 	background:#ccc;
 	width:100vw;
 	height:100vh;
@@ -35,5 +30,6 @@
   padding:100px;
   &.active{
   	top:-192px;
+    display:block;
   }
 }

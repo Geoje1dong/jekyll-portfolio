@@ -49,5 +49,35 @@ body{
       }
     }
   }
-
 }
+#footer{
+  @include box-style(#fff, 1600px, 0 80px, 100px auto 60px);
+color:#fff;
+}
+
+section.list{
+  @include box-style(#fff, 1600px, 0 80px, 80px auto);
+}
+
+.grid-container {
+  width: 100%;margin-left: auto;margin-right: auto;
+  .grid-row {
+    position: relative;width: 100%;padding: 0.5rem 0;
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 50%;}
+    .col-7 {width: 57.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+    &:after {content: ""; display: table; clear: both;}
+    .hidden-sm {display: none;}
+  }
+}
+.grid-row [class^="col"] {float: left;min-height: 0.125rem; color: #333;}
+.grid-row [class^="col"] p{margin-bottom:12px;}

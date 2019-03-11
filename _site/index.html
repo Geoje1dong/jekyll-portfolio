@@ -61,8 +61,9 @@
     </div>
   </div>
   <div class="workBox">
-    <div id="work-list">
-	<div id="scrolling" class="clearfix" style="width:100vw;">
+    <script src="/assets/lib/jquery-3.3.1.js"></script>
+<div id="work-list">
+	<div id="scrolling" class="clearfix mCustomScrollbar" style="width:100vw;">
 	</div>
 </div>
 
@@ -70,8 +71,8 @@
 	<div class="content_box"></div>
 	<button onClick="contentClose();">닫기</button>
 </div>
-
-<script src="/assets/lib/jquery-1.12.0.min.js"></script>
+<link rel="stylesheet" href="/assets/css/jquery.mCustomScrollbar.css" />
+<script src="/assets/js/jquery.mCustomScrollbar.js"></script>
 <script>
   $(document).ready(function(){
     $.ajax({
@@ -82,7 +83,8 @@
         var show = "";
         $.each(data,function(index, item){
 						show += '<div class="card">';
-						show += '	<button class="thumb" onClick=abs('+(index+1)+'); style="background-image:url(/assets/images/'+item.work_img+');">';
+						//show += '	<button class="thumb" onClick=abs('+(index+1)+'); style="background-image:url(/assets/images/'+item.work_img+'.jg);">';
+						show += '	<button class="thumb" onClick=abs('+(index+1)+'); style="background:#fff;">';
 						show += '		<div class="info">';
 						show += '			<div class="name">';
 						show += '				<h3>'+item.tit+'</h3>';
@@ -93,12 +95,15 @@
 						show += '</div>';
         });
         card_wrap.append(show);
-				cardWidth();
+				$("#scrolling").mCustomScrollbar({
+					axis:"x",
+					theme:"dark-thin",
+					autoExpandScrollbar:true,
+					advanced:{autoExpandHorizontalScroll:true}
+				});
       },
     });
-		scrolling();
   });
-
 
   function abs(listNumber){
   	$.ajax({
@@ -116,54 +121,6 @@
 	  $('#work-content>.content_box').empty();
   }
 
-	let totalCard;
-	let widthCard;
-	let scrollingTarget = document.getElementById('scrolling')
-	let horizontalWidth  = 0;
-	let scrollStop = true;
-	let scrollLeft = 0;
-
-	function cardWidth(){
-		totalCard = $('.card').length;
-		widthCard = $('.card').outerWidth();
-		horizontalWidth = widthCard*totalCard;
-		scrollingTarget.style.width = horizontalWidth+ 'px';
-	}
-
-
-
-
-	function scrolling(){
-		totalCard = $('.card').length;
-		widthCard = $('.card').outerWidth();
-
-		$('html, body').on('mousewheel DOMMouseScroll', function(event){
-			let wheelData = event.originalEvent;
-			delta = 0;
-			if(wheelData.detail){
-				delta = wheelData.detail *- 40;
-			}else{
-				delta = wheelData.wheelDelta;
-			}
-			console.log(scrollLeft+', '+totalCard+', '+widthCard+', '+scrollStop);
-			if(delta < 0 && scrollLeft > (totalCard-7)*-widthCard && scrollStop){
-				// 마우스 휠을 아래로 내렸을 경우
-				scrollStop = false;
-				setTranslate(scrollLeft += -widthCard, scrollingTarget)
-			};
-			if(delta > 0 && scrollLeft < 0 && scrollStop){
-				// 마우스 휠을 위로 올렸을 경우
-				scrollStop = false;
-				setTranslate(scrollLeft += widthCard, scrollingTarget)
-			};
-		});
-	}
-
-	function setTranslate(xPos, el){
-		scrollLeft = parseInt(xPos);
-		el.style.left = `${xPos}px`;
-		scrollStop = true;
-	}
 </script>
 
   </div>
@@ -180,27 +137,12 @@
         
         
         
-        <li>
-            <a id="link-rss" href="/rss" target="_blank">
-                <span class="sr-only">rss</span>
-            </a>
-        </li>
-    </ul>
-    <ul id="footer-menu">
-        <li><a href="//www.kakaocorp.com">Kakao</a></li>
-        <li><a href="//careers.kakao.com/jobs">Jobs</a></li>
-        <li><a href="//privacy.kakaocorp.com">Privacy</a></li>
     </ul>
     <p id="copyright">
-        <a href="//www.kakaocorp.com">Copyright &copy; Kakao Corp.</a>
-        All rights reserved.
+        Copyright by Jaehyune Kim. 2019
     </p>
 </div><!--#footer-->
 
 
-<script src="/assets/lib/jquery-1.12.0.min.js"></script>
-<script src="/assets/lib/jquery.magnific-popup.min.js"></script>
-<script src="/assets/js/index.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </body>
 </html>

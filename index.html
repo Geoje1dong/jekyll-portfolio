@@ -2,8 +2,10 @@
 layout: home
 title: Home
 ---
+
+<script src="{{ site.asset_url }}/lib/jquery-3.3.1.js"></script>
 <div id="work-list">
-	<div id="scrolling" class="clearfix" style="width:100vw;">
+	<div id="scrolling" class="clearfix mCustomScrollbar" style="width:100vw;">
 	</div>
 </div>
 
@@ -11,8 +13,8 @@ title: Home
 	<div class="content_box"></div>
 	<button onClick="contentClose();">닫기</button>
 </div>
-
-<script src="{{ site.asset_url }}/lib/jquery-1.12.0.min.js"></script>
+<link rel="stylesheet" href="{{ site.asset_url }}/css/jquery.mCustomScrollbar.css" />
+<script src="{{ site.asset_url }}/js/jquery.mCustomScrollbar.js"></script>
 <script>
   $(document).ready(function(){
     $.ajax({
@@ -23,7 +25,8 @@ title: Home
         var show = "";
         $.each(data,function(index, item){
 						show += '<div class="card">';
-						show += '	<button class="thumb" onClick=abs('+(index+1)+'); style="background-image:url({{ site.img_url }}/'+item.work_img+');">';
+						//show += '	<button class="thumb" onClick=abs('+(index+1)+'); style="background-image:url({{ site.img_url }}/'+item.work_img+'.jg);">';
+						show += '	<button class="thumb" onClick=abs('+(index+1)+'); style="background:#fff;">';
 						show += '		<div class="info">';
 						show += '			<div class="name">';
 						show += '				<h3>'+item.tit+'</h3>';
@@ -34,12 +37,15 @@ title: Home
 						show += '</div>';
         });
         card_wrap.append(show);
-				cardWidth();
+				$("#scrolling").mCustomScrollbar({
+					axis:"x",
+					theme:"dark-thin",
+					autoExpandScrollbar:true,
+					advanced:{autoExpandHorizontalScroll:true}
+				});
       },
     });
-		scrolling();
   });
-
 
   function abs(listNumber){
   	$.ajax({
@@ -57,52 +63,4 @@ title: Home
 	  $('#work-content>.content_box').empty();
   }
 
-	let totalCard;
-	let widthCard;
-	let scrollingTarget = document.getElementById('scrolling')
-	let horizontalWidth  = 0;
-	let scrollStop = true;
-	let scrollLeft = 0;
-
-	function cardWidth(){
-		totalCard = $('.card').length;
-		widthCard = $('.card').outerWidth();
-		horizontalWidth = widthCard*totalCard;
-		scrollingTarget.style.width = horizontalWidth+ 'px';
-	}
-
-
-
-
-	function scrolling(){
-		totalCard = $('.card').length;
-		widthCard = $('.card').outerWidth();
-
-		$('html, body').on('mousewheel DOMMouseScroll', function(event){
-			let wheelData = event.originalEvent;
-			delta = 0;
-			if(wheelData.detail){
-				delta = wheelData.detail *- 40;
-			}else{
-				delta = wheelData.wheelDelta;
-			}
-			console.log(scrollLeft+', '+totalCard+', '+widthCard+', '+scrollStop);
-			if(delta < 0 && scrollLeft > (totalCard-7)*-widthCard && scrollStop){
-				// 마우스 휠을 아래로 내렸을 경우
-				scrollStop = false;
-				setTranslate(scrollLeft += -widthCard, scrollingTarget)
-			};
-			if(delta > 0 && scrollLeft < 0 && scrollStop){
-				// 마우스 휠을 위로 올렸을 경우
-				scrollStop = false;
-				setTranslate(scrollLeft += widthCard, scrollingTarget)
-			};
-		});
-	}
-
-	function setTranslate(xPos, el){
-		scrollLeft = parseInt(xPos);
-		el.style.left = `${xPos}px`;
-		scrollStop = true;
-	}
 </script>
