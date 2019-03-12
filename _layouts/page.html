@@ -1,4 +1,33 @@
 ---
 layout: default
 ---
-{{content}}
+
+{% if page.image and page.headerImage %}
+  <div class="loading-animation post-header" style="background-image:url({{ page.image }})">
+  </div>
+{% endif %}
+<div class="page">
+
+  <span class="page-type">test</span>
+
+  <h1 class="title">{{ page.title }}</h1>
+
+  <p class="date">
+      <time datetime="{{ page.date | date:"%d-%m-%Y" }}">{{ page.date | date: "%A. %B %d, %Y" }}</time>
+      {% if site.read-time %} - {% include read-time.html %}{% endif %}
+  </p>
+  <div class="page-content-box">
+    {{content}}
+  </div>
+
+
+</div>
+
+
+<script>
+  $(document).ready(function(){
+    $('body').css('overflow-y','auto');
+  });
+
+
+</script>

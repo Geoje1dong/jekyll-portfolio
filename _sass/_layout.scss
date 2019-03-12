@@ -23,12 +23,15 @@ body{
 .clearfix::after{content:''; clear: both; display: block;}
 #header{
   @include box-style(#fff, 1600px, 0 80px, 80px auto);
+  #logo{
+    color:#fff;
+  }
   a{
     font-size:2rem; font-weight:700;
   }
   #menu{
     position: absolute;
-    right: 80px;
+    right: 5rem;
     bottom: 0;
     li{
       padding-left:24px; float:left;

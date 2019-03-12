@@ -3,7 +3,7 @@ layout: home
 title: Home
 ---
 
-<script src="{{ site.asset_url }}/lib/jquery-3.3.1.js"></script>
+
 <div id="work-list">
 	<div id="scrolling" class="clearfix mCustomScrollbar" style="width:100vw;">
 	</div>
@@ -52,7 +52,7 @@ title: Home
       url : "{{ site.work_url }}/work"+listNumber+".html",
       dataType : "html",
       success : function(data){
-        alert('list'+listNumber);
+				$('#work-content').css('display','block');
         $('#work-content>.content_box').append(data);
 			  $('#work-content').addClass('active');
       }

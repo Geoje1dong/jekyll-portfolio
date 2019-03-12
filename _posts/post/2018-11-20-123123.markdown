@@ -1,10 +1,12 @@
 ---
-title: "테스트3"
-layout: post
-date: 2017-09-26 00:00
-headerImage: false
+layout: page
+title: "테스트3 타이틀"
+date: 2018-09-21 11:00
+headerImage: true
 projects: true
 category: project
 description: 테스트3욤
+image: /files/covers/kakao-blind-recruitment-2019.jpg
 ---
-테스트 333
+
+테스트 333 바디바디바디

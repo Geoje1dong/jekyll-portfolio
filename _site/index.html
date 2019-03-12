@@ -9,6 +9,7 @@
 <meta name="author" content=""/>
 <meta name="description" content=""/>
 <link rel="stylesheet" href="/assets/css/style.css">
+<script src="/assets/lib/jquery-3.3.1.js"></script>
 
 </head>
 <body class="home-template">
@@ -21,7 +22,7 @@
         <span class="sr-only">Toggle Search Form</span>
     </button> -->
     <a id="logo" href="/">
-        <span class="sr-only">Logo how</span>
+        Logo how
     </a>
     <!-- <div id="search">
         <input id="search-input" type="search" placeholder="Search..." value="" />
@@ -61,8 +62,7 @@
     </div>
   </div>
   <div class="workBox">
-    <script src="/assets/lib/jquery-3.3.1.js"></script>
-<div id="work-list">
+    <div id="work-list">
 	<div id="scrolling" class="clearfix mCustomScrollbar" style="width:100vw;">
 	</div>
 </div>
@@ -110,7 +110,7 @@
       url : "/work/work"+listNumber+".html",
       dataType : "html",
       success : function(data){
-        alert('list'+listNumber);
+				$('#work-content').css('display','block');
         $('#work-content>.content_box').append(data);
 			  $('#work-content').addClass('active');
       }
