@@ -28,10 +28,10 @@ title: Home
 						//show += '	<button class="thumb" onClick=abs('+(index+1)+'); style="background-image:url({{ site.img_url }}/'+item.work_img+'.jg);">';
 						show += '	<button class="thumb" onClick=abs('+(index+1)+'); style="background:#fff;">';
 						show += '		<div class="info">';
-						show += '			<div class="name">';
-						show += '				<h3>'+item.tit+'</h3>';
-						show += '				<p>'+item.cnt+'</p>';
-						show += '			</div>';
+						show += '			<p class="name">';
+						show += '				<span>'+item.tit+'</span>';
+						show += '				'+item.cnt+'';
+						show += '			</p>';
 						show += '		</div>';
 						show += '	</button>';
 						show += '</div>';
@@ -62,5 +62,43 @@ title: Home
 	  $('#work-content').removeClass('active');
 	  $('#work-content>.content_box').empty();
   }
+
+	let cardList = document.querySelector('#scrolling');
+	let OriginalText = '';
+	let timer;
+	cardList.addEventListener("mouseover", cardOverEventHandler)
+	cardList.addEventListener("mouseout", cardOutEventHandler)
+
+	function cardOverEventHandler(event){
+	  let target = event.target;
+	  if(target.className === 'thumb'){
+	    const effectTarget = target.querySelector('.name');
+	    OriginalText = effectTarget.innerText;
+	    const speed = 75;
+	    let Text = effectTarget.innerText;
+	    let i = 0;
+	    effectTarget.innerHTML = '';
+	    timer = setInterval(function() {
+	      if (i < Text.length) {
+	        let text1 = document.createTextNode(Text.charAt(i));
+	        effectTarget.appendChild(text1);
+	        i++;
+	      } else {
+	        clearInterval(timer);
+	      }
+	    }, speed);
+	  }
+	}
+
+	function cardOutEventHandler(event){
+	  let target = event.target;
+	  if(target.className === 'thumb'){
+	    clearInterval(timer);
+	    let text1 = document.createTextNode(OriginalText);
+	    let element = target.querySelector('.name');
+	    element.innerHTML = '';
+	    element.appendChild(text1);
+	  }
+	}
 
 </script>
