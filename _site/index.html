@@ -68,15 +68,16 @@
 </div>
 
 <div id="work-content">
-	<div class="content_box"></div>
-	<button onClick="contentClose();">닫기</button>
+	<div class="article">
+
+	</div>
 </div>
 <link rel="stylesheet" href="/assets/css/jquery.mCustomScrollbar.css" />
 <script src="/assets/js/jquery.mCustomScrollbar.js"></script>
 <script>
   $(document).ready(function(){
     $.ajax({
-      url : "/work/test.json",
+      url : "/work/work.json",
       dataType : "json",
       success : function(data){
         var card_wrap = $('#scrolling');
@@ -111,14 +112,18 @@
       dataType : "html",
       success : function(data){
 				$('#work-content').css('display','block');
-        $('#work-content>.content_box').append(data);
-			  $('#work-content').addClass('active');
+        $('#work-content>.article').append(data);
+				setTimeout(function(){
+					$('#work-content').addClass('active');
+					let close = '<button class="close" type="button" onClick="contentClose()";><img src="/work/img/down-arrow.svg"></button>'
+					$('#work-content>.article').append(close);
+				}, 100);
       }
     });
   };
   function contentClose(){
 	  $('#work-content').removeClass('active');
-	  $('#work-content>.content_box').empty();
+	  $('#work-content>.article').empty();
   }
 
 	let cardList = document.querySelector('#scrolling');
