@@ -3,7 +3,6 @@ layout: home
 title: Home
 ---
 
-
 <div id="work-list">
 	<div id="scrolling" class="clearfix mCustomScrollbar" style="width:100vw;">
 	</div>
@@ -11,9 +10,10 @@ title: Home
 
 <div id="work-content">
 	<div class="article">
-
 	</div>
 </div>
+
+
 <link rel="stylesheet" href="{{ site.asset_url }}/css/jquery.mCustomScrollbar.css" />
 <script src="{{ site.asset_url }}/js/jquery.mCustomScrollbar.js"></script>
 <script>
@@ -26,15 +26,16 @@ title: Home
         var show = "";
         $.each(data,function(index, item){
 						show += '<div class="card">';
-						//show += '	<button class="thumb" onClick=abs('+(index+1)+'); style="background-image:url({{ site.img_url }}/'+item.work_img+'.jg);">';
-						show += '	<button class="thumb" onClick=abs('+(index+1)+'); style="background:#fff;">';
-						show += '		<div class="info">';
-						show += '			<p class="name">';
-						show += '				<span>'+item.tit+'</span>';
-						show += '				'+item.cnt+'';
-						show += '			</p>';
-						show += '		</div>';
-						show += '	</button>';
+						//show += '	<button class="thumb" onClick=abs('+(index+1)+');>';
+						show += '	<a href="#none" class="thumb" onClick=abs('+(index+1)+'); title="'+item.tit+' 포트폴리오">'
+						show += '		<p class="name">'+item.tit+'</p>';6
+						show += '	</a>'
+						show += '		<div class="card-area" style="background-image:url({{ site.work_url }}/img/id'+item.ID+'/card_img.jpg);">'
+						show += '				<div class="info">';
+						show += '					<p class="effect-box"></p>';
+						//show += '				'+item.cnt+'';
+						show += '				</div>';
+						show += '		</div>'
 						show += '</div>';
         });
         card_wrap.append(show);
@@ -46,7 +47,7 @@ title: Home
 				});
       },
     });
-  });
+	});
 
   function abs(listNumber){
   	$.ajax({
@@ -59,51 +60,70 @@ title: Home
 					$('#work-content').addClass('active');
 					let close = '<button class="close" type="button" onClick="contentClose()";><img src="{{ site.work_url }}/img/down-arrow.svg"></button>'
 					$('#work-content>.article').append(close);
-				}, 100);
+					console.log($('#work-content').css('top'));
+				}, 10);
+				setTimeout(function(){
+					articleEffect(1,0);
+				},200);
       }
     });
   };
+
+	function articleEffect(opacity, topPosition){
+		$('#work-content>.article').css({
+			'opacity':opacity,
+			'transform':'matrix(1, 0, 0, 1, 0, '+topPosition+')',
+		})
+	}
+
   function contentClose(){
 	  $('#work-content').removeClass('active');
 	  $('#work-content>.article').empty();
+		articleEffect(0,100);
   }
 
 	let cardList = document.querySelector('#scrolling');
-	let OriginalText = '';
 	let timer;
 	cardList.addEventListener("mouseover", cardOverEventHandler)
 	cardList.addEventListener("mouseout", cardOutEventHandler)
 
+	function randDelay(min, max) {
+		return Math.floor(Math.random() * (max-min+1)+min);
+	}
+
 	function cardOverEventHandler(event){
 	  let target = event.target;
 	  if(target.className === 'thumb'){
-	    const effectTarget = target.querySelector('.name');
-	    OriginalText = effectTarget.innerText;
-	    const speed = 75;
-	    let Text = effectTarget.innerText;
-	    let i = 0;
-	    effectTarget.innerHTML = '';
-	    timer = setInterval(function() {
-	      if (i < Text.length) {
-	        let text1 = document.createTextNode(Text.charAt(i));
-	        effectTarget.appendChild(text1);
-	        i++;
-	      } else {
-	        clearInterval(timer);
-	      }
-	    }, speed);
+			const card = target.parentNode;
+			const effectTarget = card.querySelector('.effect-box');
+			const typingText = target.querySelector('.name').innerText;
+			TypingEffect(effectTarget, typingText);
 	  }
 	}
 
 	function cardOutEventHandler(event){
 	  let target = event.target;
 	  if(target.className === 'thumb'){
+			const card = target.parentNode;
+			const effectTarget = card.querySelector('.effect-box');
+			effectTarget.innerHTML = '';
 	    clearInterval(timer);
-	    let text1 = document.createTextNode(OriginalText);
-	    let element = target.querySelector('.name');
-	    element.innerHTML = '';
-	    element.appendChild(text1);
 	  }
 	}
+
+	function TypingEffect(effectTarget, typingText){
+		let i = 0;
+		timer = setInterval(function() {
+			if (i < typingText.length) {
+				let text1 = document.createTextNode(typingText.charAt(i));
+				effectTarget.appendChild(text1);
+				i++;
+			} else {
+				clearInterval(timer);
+			}
+		}, randDelay(30, 60));
+	}
+
+	
 
 </script>

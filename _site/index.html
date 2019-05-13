@@ -22,7 +22,7 @@
         <span class="sr-only">Toggle Search Form</span>
     </button> -->
     <a id="logo" href="/">
-        Logo how
+        KimJaeHyun :)
     </a>
     <!-- <div id="search">
         <input id="search-input" type="search" placeholder="Search..." value="" />
@@ -55,10 +55,9 @@
     <div id="mainContentWrap">
   <div id="mainContent">
     <div class="introBox">
-      <!-- <p>안녕하세요.</p>
-      <p>UI UX 디자이너 <strong>김재현</strong> 입니다.</p>
-      <p>저의 <strong>포트폴리오</strong>에 오신것을 환영합니다.</p> -->
-      <p>가로 스크롤 공부</p>
+      <p>안녕하세요.</p>
+      <p>UI / UX 디자이너 <strong>김재현</strong> 입니다.</p>
+      <p>저의 <strong>포트폴리오</strong>에 오신것을 환영합니다.</p>
     </div>
   </div>
   <div class="workBox">
@@ -69,9 +68,10 @@
 
 <div id="work-content">
 	<div class="article">
-
 	</div>
 </div>
+
+
 <link rel="stylesheet" href="/assets/css/jquery.mCustomScrollbar.css" />
 <script src="/assets/js/jquery.mCustomScrollbar.js"></script>
 <script>
@@ -84,15 +84,16 @@
         var show = "";
         $.each(data,function(index, item){
 						show += '<div class="card">';
-						//show += '	<button class="thumb" onClick=abs('+(index+1)+'); style="background-image:url(/assets/images/'+item.work_img+'.jg);">';
-						show += '	<button class="thumb" onClick=abs('+(index+1)+'); style="background:#fff;">';
-						show += '		<div class="info">';
-						show += '			<p class="name">';
-						show += '				<span>'+item.tit+'</span>';
-						show += '				'+item.cnt+'';
-						show += '			</p>';
-						show += '		</div>';
-						show += '	</button>';
+						//show += '	<button class="thumb" onClick=abs('+(index+1)+');>';
+						show += '	<a href="#none" class="thumb" onClick=abs('+(index+1)+'); title="'+item.tit+' 포트폴리오">'
+						show += '		<p class="name">'+item.tit+'</p>';6
+						show += '	</a>'
+						show += '		<div class="card-area" style="background-image:url(/work/img/id'+item.ID+'/card_img.jpg);">'
+						show += '				<div class="info">';
+						show += '					<p class="effect-box"></p>';
+						//show += '				'+item.cnt+'';
+						show += '				</div>';
+						show += '		</div>'
 						show += '</div>';
         });
         card_wrap.append(show);
@@ -104,7 +105,7 @@
 				});
       },
     });
-  });
+	});
 
   function abs(listNumber){
   	$.ajax({
@@ -117,52 +118,71 @@
 					$('#work-content').addClass('active');
 					let close = '<button class="close" type="button" onClick="contentClose()";><img src="/work/img/down-arrow.svg"></button>'
 					$('#work-content>.article').append(close);
-				}, 100);
+					console.log($('#work-content').css('top'));
+				}, 10);
+				setTimeout(function(){
+					articleEffect(1,0);
+				},200);
       }
     });
   };
+
+	function articleEffect(opacity, topPosition){
+		$('#work-content>.article').css({
+			'opacity':opacity,
+			'transform':'matrix(1, 0, 0, 1, 0, '+topPosition+')',
+		})
+	}
+
   function contentClose(){
 	  $('#work-content').removeClass('active');
 	  $('#work-content>.article').empty();
+		articleEffect(0,100);
   }
 
 	let cardList = document.querySelector('#scrolling');
-	let OriginalText = '';
 	let timer;
 	cardList.addEventListener("mouseover", cardOverEventHandler)
 	cardList.addEventListener("mouseout", cardOutEventHandler)
 
+	function randDelay(min, max) {
+		return Math.floor(Math.random() * (max-min+1)+min);
+	}
+
 	function cardOverEventHandler(event){
 	  let target = event.target;
 	  if(target.className === 'thumb'){
-	    const effectTarget = target.querySelector('.name');
-	    OriginalText = effectTarget.innerText;
-	    const speed = 75;
-	    let Text = effectTarget.innerText;
-	    let i = 0;
-	    effectTarget.innerHTML = '';
-	    timer = setInterval(function() {
-	      if (i < Text.length) {
-	        let text1 = document.createTextNode(Text.charAt(i));
-	        effectTarget.appendChild(text1);
-	        i++;
-	      } else {
-	        clearInterval(timer);
-	      }
-	    }, speed);
+			const card = target.parentNode;
+			const effectTarget = card.querySelector('.effect-box');
+			const typingText = target.querySelector('.name').innerText;
+			TypingEffect(effectTarget, typingText);
 	  }
 	}
 
 	function cardOutEventHandler(event){
 	  let target = event.target;
 	  if(target.className === 'thumb'){
+			const card = target.parentNode;
+			const effectTarget = card.querySelector('.effect-box');
+			effectTarget.innerHTML = '';
 	    clearInterval(timer);
-	    let text1 = document.createTextNode(OriginalText);
-	    let element = target.querySelector('.name');
-	    element.innerHTML = '';
-	    element.appendChild(text1);
 	  }
 	}
+
+	function TypingEffect(effectTarget, typingText){
+		let i = 0;
+		timer = setInterval(function() {
+			if (i < typingText.length) {
+				let text1 = document.createTextNode(typingText.charAt(i));
+				effectTarget.appendChild(text1);
+				i++;
+			} else {
+				clearInterval(timer);
+			}
+		}, randDelay(30, 60));
+	}
+
+	
 
 </script>
 
