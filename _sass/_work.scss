@@ -15,7 +15,7 @@
           position: absolute;
           line-height: 2em;
           left: 0;
-          bottom: -27px;
+          bottom: 25px;
           font-size: 16px;
           padding-top: 2px;
           border-radius: 4px;
@@ -28,7 +28,7 @@
           position: absolute;
           line-height: 2em;
           left: 0;
-          bottom: -58px;
+          bottom: -8px;
           font-size: 14px;
           padding-top: 2px;
           border-radius: 4px;
@@ -46,7 +46,8 @@
   .card:hover{
     transform: matrix(1, 0, 0, 1, 0, -58.86);
     .card-area{
-      box-shadow: 0 30px 60px 0 rgba(255, 221, 56, 0.1);
+      //box-shadow: 0 30px 60px 0 rgba(255, 255, 255, 0.07);
+      box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 1);
       cursor: pointer;
       .info{opacity: 1;}
     }
@@ -69,18 +70,20 @@
     display:block;
   }
   .article{
-    max-width:1200px; margin:0 auto; font-size:0.75rem; line-height:1.4rem;position: relative; color:#1e1e1e; transform:matrix(1,0,0,1,0,100); opacity: 0; transition: all 0.5s ease-out;
+    max-width:1200px; margin:0 auto; font-size:0.75rem; line-height:1.4rem;position: relative; color:#1e1e1e; transform:matrix(1,0,0,1,0,100); opacity: 0; transition: all 0.5s ease-out; padding:0 0 100px;
     .title{
       font-size:40px; margin:80px 0;line-height: 1.4em;
     }
     .explanation{
       width:65%; float:left;
+
     }
     .list{
       width:30%; float:right;
+      margin-bottom:50px;
     }
     .close{
-      position:fixed; padding: 21px 22px; background: #fff; border: 1px solid rgba(0,0,0,0.5); cursor:pointer; -webkit-box-shadow: 3px 7px 9px -4px rgba(0,0,0,0.1); -moz-box-shadow:3px 7px 9px -4px rgba(0,0,0,0.1); box-shadow: 3px 7px 9px -4px rgba(0,0,0,0.1);right: 80px;top: -2px;
+      position:fixed; padding: 21px 22px; background: #fff; border: 1px solid rgba(0,0,0,0.5); cursor:pointer; -webkit-box-shadow: 3px 7px 9px -4px rgba(0,0,0,0.1); -moz-box-shadow:3px 7px 9px -4px rgba(0,0,0,0.1); box-shadow: 3px 7px 9px -4px rgba(0,0,0,0.1);right:0px;top: -2px;
       img{
         width:14px; height:auto;
       }
