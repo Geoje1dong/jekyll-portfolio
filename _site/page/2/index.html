@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no"/>
+<title></title>
+<meta name="title" content="" />
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<link rel="stylesheet" href="/assets/css/style.css">
+<script src="/assets/lib/jquery-3.3.1.js"></script>
+
+</head>
+<body class="home-template">
+
+<div id="header">
+    <!-- <button id="menu-toggle" type="button">
+        <span class="sr-only">Toggle Navigation Menu</span>
+    </button>
+    <button id="search-toggle" type="button">
+        <span class="sr-only">Toggle Search Form</span>
+    </button> -->
+    <a id="logo" href="/">
+        KimJaeHyun :)
+    </a>
+    <!-- <div id="search">
+        <input id="search-input" type="search" placeholder="Search..." value="" />
+    </div> -->
+    <ul class="search__results" id="results-container"></ul>
+    <ul id="menu" class="nav clearfix">
+        <li class=" active "><a href="/">Work</a></li>
+        <li class=""><a href="/blog/">Blog</a></li>
+        <li class=""><a href="/about/">About</a></li>
+    </ul>
+</div>
+<!-- Script pointing to jekyll-search.js -->
+<!-- <script src="/dest/jekyll-search.js" type="text/javascript"></script> -->
+
+<!-- <script type="text/javascript">
+    SimpleJekyllSearch({
+        searchInput: document.getElementById('search-input'),
+        resultsContainer: document.getElementById('results-container'),
+        json: '/search2.json',
+        searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
+        noResultsText: '<li>No results found</li>',
+        limit: 15,
+        fuzzy: false,
+        exclude: ['Welcome']
+    })
+</script><!-- #header -->
+
+
+<div id="wrapper">
+    <div id="mainContentWrap">
+  <div id="mainContent">
+    <div class="introBox">
+      <p>안녕하세요.</p>
+      <p>UI / UX 디자이너 <strong>김재현</strong> 입니다.</p>
+      <p>저의 <strong>포트폴리오</strong>에 오신것을 환영합니다.</p>
+    </div>
+  </div>
+  <div class="workBox">
+    <div id="work-list">
+	<div id="scrolling" class="clearfix mCustomScrollbar" style="width:100vw;">
+	</div>
+</div>
+
+<div id="work-content">
+	<div class="article">
+	</div>
+</div>
+
+
+<link rel="stylesheet" href="/assets/css/jquery.mCustomScrollbar.css" />
+<script src="/assets/js/jquery.mCustomScrollbar.js"></script>
+<script>
+  $(document).ready(function(){
+    $.ajax({
+      url : "/work/work.json",
+      dataType : "json",
+      success : function(data){
+        var card_wrap = $('#scrolling');
+        var show = "";
+        $.each(data,function(index, item){
+						show += '<div class="card">';
+						//show += '	<button class="thumb" onClick=abs('+(index+1)+');>';
+						show += '	<a href="#none" class="thumb" onClick=abs('+item.ID+'); title="'+item.tit+' 포트폴리오">'
+						show += '		<p class="ptit">'+item.tit+'</p>';
+						show += '		<p class="pcnt">'+item.cnt+'</p>';
+						show += '	</a>'
+						show += '		<div class="card-area" style="background-image:url(/work/img/id'+item.ID+'/card_img.jpg);">'
+						show += '				<div class="info">';
+						show += '					<p class="effect-box"></p>';
+						show += '					<p class="cnteffect-box"></p>';
+						show += '				</div>';
+						show += '		</div>'
+						show += '</div>';
+        });
+        card_wrap.append(show);
+				$("#scrolling").mCustomScrollbar({
+					axis:"x",
+					theme:"dark-thin",
+					autoExpandScrollbar:true,
+					advanced:{autoExpandHorizontalScroll:true}
+				});
+      },
+    });
+	});
+
+  function abs(listNumber){
+  	$.ajax({
+      url : "/work/work"+listNumber+".html",
+      dataType : "html",
+      success : function(data){
+				$('#work-content').css('display','block');
+        $('#work-content>.article').append(data);
+				setTimeout(function(){
+					$('#work-content').addClass('active');
+					let close = '<button class="close" type="button" onClick="contentClose()";><img src="/work/img/down-arrow.svg"></button>'
+					$('#work-content>.article').append(close);
+					console.log($('#work-content').css('top'));
+				}, 10);
+				setTimeout(function(){
+					articleEffect(1,0);
+				},200);
+      }
+    });
+  };
+
+	function articleEffect(opacity, topPosition){
+		$('#work-content>.article').css({
+			'opacity':opacity,
+			'transform':'matrix(1, 0, 0, 1, 0, '+topPosition+')',
+		})
+	}
+
+  function contentClose(){
+	  $('#work-content').removeClass('active');
+	  $('#work-content>.article').empty();
+		articleEffect(0,100);
+  }
+
+	let cardList = document.querySelector('#scrolling');
+	let timer;
+	cardList.addEventListener("mouseover", cardOverEventHandler)
+	cardList.addEventListener("mouseout", cardOutEventHandler)
+
+	function randDelay(min, max) {
+		return Math.floor(Math.random() * (max-min+1)+min);
+	}
+
+	function cardOverEventHandler(event){
+	  let target = event.target;
+	  if(target.className === 'thumb'){
+			const card = target.parentNode;
+			const titEffectTarget = card.querySelector('.effect-box');
+			const cntEffectTarget = card.querySelector('.cnteffect-box');
+			titEffectTarget.innerHTML = '';
+			cntEffectTarget.innerHTML = '';
+			const titTypingText = target.querySelector('.ptit').innerText;
+			const cntTypingText = target.querySelector('.pcnt').innerText;
+			TypingEffect(titEffectTarget, titTypingText);
+			TypingEffect2(cntEffectTarget, cntTypingText);
+	  }
+	}
+
+	function cardOutEventHandler(event){
+	  let target = event.target;
+	  if(target.className === 'thumb'){
+	    clearInterval(timer);
+			clearInterval(timer2);
+	  }
+	}
+
+	function TypingEffect(effectTarget, typingText){
+		let i = 0;
+		timer = setInterval(function() {
+			if (i < typingText.length) {
+				let text1 = document.createTextNode(typingText.charAt(i));
+				effectTarget.appendChild(text1);
+				i++;
+			} else {
+				clearInterval(timer);
+			}
+		}, randDelay(30, 40));
+	}
+
+	function TypingEffect2(effectTarget, typingText){
+		let a = 0;
+		timer2 = setInterval(function() {
+			if (a < typingText.length) {
+				let text1 = document.createTextNode(typingText.charAt(a));
+				effectTarget.appendChild(text1);
+				a++;
+			} else {
+				clearInterval(timer2);
+			}
+		}, randDelay(30, 40));
+	}
+
+</script>
+
+  </div>
+</div>
+
+
+    <div class="clearfix"></div>
+
+    <a href="#" id="back-to-top"></a>
+</div>
+
+<div id="footer" class="container-fluid">
+    <ul id="links">
+        
+        
+        
+    </ul>
+    <p id="copyright">
+        Copyright by Jaehyune Kim. 2019
+    </p>
+</div><!--#footer-->
+
+
+</body>
+</html>
