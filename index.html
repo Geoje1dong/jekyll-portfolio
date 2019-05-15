@@ -40,13 +40,15 @@ title: Home
 						show += '</div>';
         });
         card_wrap.append(show);
+      },
+			complete: function(){
 				$("#scrolling").mCustomScrollbar({
 					axis:"x",
 					theme:"dark-thin",
 					autoExpandScrollbar:true,
 					advanced:{autoExpandHorizontalScroll:true}
 				});
-      },
+			},
     });
 	});
 
@@ -67,7 +69,7 @@ title: Home
 				setTimeout(function(){
 					articleEffect(1,0);
 				},200);
-      }
+      },
     });
 
   };

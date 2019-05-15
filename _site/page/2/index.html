@@ -95,13 +95,15 @@
 						show += '</div>';
         });
         card_wrap.append(show);
+      },
+			complete: function(){
 				$("#scrolling").mCustomScrollbar({
 					axis:"x",
 					theme:"dark-thin",
 					autoExpandScrollbar:true,
 					advanced:{autoExpandHorizontalScroll:true}
 				});
-      },
+			},
     });
 	});
 
