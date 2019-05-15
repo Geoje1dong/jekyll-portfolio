@@ -1,7 +1,7 @@
 [
 {"ID":"0", "tit":"WorldjobPlus","cnt":"System Management"},
-{"ID":"1", "tit":"Rengo Solution","cnt":"UI/UX"},
-{"ID":"2", "tit":"WorldjobPlus","cnt":"UI/UX RENEWAL"},
-{"ID":"3", "tit":"WorldjobPlus File Upload","cnt":"UI/UX"},
+{"ID":"1", "tit":"Rengo Solution","cnt":"WebApp"},
+{"ID":"2", "tit":"WorldjobPlus","cnt":"Website"},
+{"ID":"3", "tit":"WorldjobPlus FileUpload","cnt":"Website"},
 {"ID":"4", "tit":"ReactDom Movie","cnt":"study"}
 ]

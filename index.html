@@ -57,6 +57,7 @@ title: Home
       success : function(data){
 				$('#work-content').css('display','block');
         $('#work-content>.article').append(data);
+				$('.home-template>#wrapper').css('z-index','10');
 				setTimeout(function(){
 					$('#work-content').addClass('active');
 					let close = '<button class="close" type="button" onClick="contentClose()";><img src="{{ site.work_url }}/img/down-arrow.svg"></button>'
@@ -68,6 +69,7 @@ title: Home
 				},200);
       }
     });
+
   };
 
 	function articleEffect(opacity, topPosition){
@@ -80,6 +82,7 @@ title: Home
   function contentClose(){
 	  $('#work-content').removeClass('active');
 	  $('#work-content>.article').empty();
+		$('.home-template>#wrapper').css('z-index','1');
 		articleEffect(0,100);
   }
 
