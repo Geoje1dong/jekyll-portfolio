@@ -68,8 +68,8 @@ body {
 
 #header {
   max-width: 1600px;
-  padding: 0 80px;
-  margin: 80px auto;
+  padding: 0 5rem;
+  margin: 5rem auto;
   color: #fff;
   width: 100%;
   position: relative;
@@ -94,7 +94,7 @@ body {
 
 .introBox {
   max-width: 1600px;
-  padding: 0 80px;
+  padding: 0 5rem;
   margin: 0 auto;
   color: #fff;
   width: 100%;
@@ -113,8 +113,8 @@ body {
 
 #footer {
   max-width: 1600px;
-  padding: 0 80px;
-  margin: 100px auto 60px;
+  padding: 0 5rem;
+  margin: 6rem auto 4rem;
   color: #fff;
   width: 100%;
   position: relative;
@@ -123,8 +123,8 @@ body {
 
 section.list {
   max-width: 1600px;
-  padding: 0 80px;
-  margin: 80px auto;
+  padding: 0 5rem;
+  margin: 5rem auto;
   color: #fff;
   width: 100%;
   position: relative; }
@@ -323,6 +323,28 @@ section.list {
   line-height: 1.8em;
   font-weight: 200;
   margin-bottom: 100px; }
+.about .company {
+  margin-bottom: 100px;
+  max-width: 800px; }
+  .about .company li {
+    padding-bottom: 3.75rem;
+    margin-bottom: 3.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+    .about .company li .company_name {
+      float: left;
+      width: 40%;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0; }
+    .about .company li .company_info {
+      float: left;
+      width: 60%; }
+      .about .company li .company_info p {
+        margin-bottom: 0; }
+  .about .company li:after {
+    content: '';
+    display: block;
+    clear: both; }
 .about .skill li {
   padding: 6px 14px 4px;
   border-radius: 100px;
