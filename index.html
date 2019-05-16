@@ -13,6 +13,9 @@ title: Home
 	</div>
 </div>
 
+<div class="log">
+
+</div>
 
 <link rel="stylesheet" href="{{ site.asset_url }}/css/jquery.mCustomScrollbar.css" />
 <script src="{{ site.asset_url }}/js/jquery.mCustomScrollbar.js"></script>
@@ -43,22 +46,18 @@ title: Home
       },
 			complete: function(){
 				console.log('a');
-				$("#scrolling").mCustomScrollbar({
-					axis:"x",
-					theme:"dark-thin",
-					autoExpandScrollbar:true,
-					advanced:{autoExpandHorizontalScroll:true, updateOnContentResize:true}
-				});
 			},
     });
-		// $(window).on("load",function(){
-		// 	$("#scrolling").mCustomScrollbar({
-		// 		axis:"x",
-		// 		theme:"dark-thin",
-		// 		autoExpandScrollbar:true,
-		// 		advanced:{autoExpandHorizontalScroll:true}
-		// 	});
-    // });
+	});
+
+	$( document ).ajaxStop(function() {
+  	console.log('b')
+		$("#scrolling").mCustomScrollbar({
+			axis:"x",
+			theme:"dark-thin",
+			autoExpandScrollbar:true,
+			advanced:{autoExpandHorizontalScroll:true, updateOnContentResize:true}
+		});
 	});
 
   function abs(listNumber){

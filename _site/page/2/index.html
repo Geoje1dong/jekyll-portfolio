@@ -68,6 +68,9 @@
 	</div>
 </div>
 
+<div class="log">
+
+</div>
 
 <link rel="stylesheet" href="/assets/css/jquery.mCustomScrollbar.css" />
 <script src="/assets/js/jquery.mCustomScrollbar.js"></script>
@@ -98,22 +101,18 @@
       },
 			complete: function(){
 				console.log('a');
-				$("#scrolling").mCustomScrollbar({
-					axis:"x",
-					theme:"dark-thin",
-					autoExpandScrollbar:true,
-					advanced:{autoExpandHorizontalScroll:true, updateOnContentResize:true}
-				});
 			},
     });
-		// $(window).on("load",function(){
-		// 	$("#scrolling").mCustomScrollbar({
-		// 		axis:"x",
-		// 		theme:"dark-thin",
-		// 		autoExpandScrollbar:true,
-		// 		advanced:{autoExpandHorizontalScroll:true}
-		// 	});
-    // });
+	});
+
+	$( document ).ajaxStop(function() {
+  	console.log('b')
+		$("#scrolling").mCustomScrollbar({
+			axis:"x",
+			theme:"dark-thin",
+			autoExpandScrollbar:true,
+			advanced:{autoExpandHorizontalScroll:true, updateOnContentResize:true}
+		});
 	});
 
   function abs(listNumber){
