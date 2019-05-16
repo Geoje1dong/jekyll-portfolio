@@ -97,6 +97,7 @@
         card_wrap.append(show);
       },
 			complete: function(){
+				console.log('a');
 				$("#scrolling").mCustomScrollbar({
 					axis:"x",
 					theme:"dark-thin",
@@ -105,14 +106,14 @@
 				});
 			},
     });
-		$(window).on("load",function(){
-			$("#scrolling").mCustomScrollbar({
-				axis:"x",
-				theme:"dark-thin",
-				autoExpandScrollbar:true,
-				advanced:{autoExpandHorizontalScroll:true}
-			});
-    });
+		// $(window).on("load",function(){
+		// 	$("#scrolling").mCustomScrollbar({
+		// 		axis:"x",
+		// 		theme:"dark-thin",
+		// 		autoExpandScrollbar:true,
+		// 		advanced:{autoExpandHorizontalScroll:true}
+		// 	});
+    // });
 	});
 
   function abs(listNumber){
@@ -127,7 +128,6 @@
 					$('#work-content').addClass('active');
 					let close = '<button class="close" type="button" onClick="contentClose()";><img src="/work/img/down-arrow.svg"></button>'
 					$('#work-content>.article').append(close);
-					console.log($('#work-content').css('top'));
 				}, 10);
 				setTimeout(function(){
 					articleEffect(1,0);
