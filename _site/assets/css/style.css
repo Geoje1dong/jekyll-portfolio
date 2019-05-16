@@ -190,71 +190,67 @@ section.list {
   left: 50%;
   transform: translateX(-50%); }
 
-#work-list {
-  position: absolute;
-  z-index: 4;
-  bottom: 10%; }
-  #work-list .card {
-    float: left;
-    width: 30vh;
-    height: 30vh;
-    padding: 10vh 2vh;
-    opacity: 1;
-    transform: matrix(1, 0, 0, 1, 0, 0);
-    transition: all .6s;
-    flex: 0 0 auto;
-    box-sizing: content-box; }
-    #work-list .card .card-area {
-      border-radius: 50%;
-      position: relative;
-      background-size: cover;
-      background-position: center;
-      width: 100%;
-      height: 100%; }
-      #work-list .card .card-area .info {
-        opacity: 0;
-        transition: all .6s; }
-        #work-list .card .card-area .info .effect-box {
-          background: white;
-          color: #121212;
-          display: inline-block;
-          padding: 0 12px;
-          position: absolute;
-          line-height: 2em;
-          left: 0;
-          bottom: 25px;
-          font-size: 16px;
-          padding-top: 2px;
-          border-radius: 4px; }
-        #work-list .card .card-area .info .cnteffect-box {
-          background: white;
-          color: #666;
-          display: inline-block;
-          padding: 0 12px;
-          position: absolute;
-          line-height: 2em;
-          left: 0;
-          bottom: -8px;
-          font-size: 14px;
-          padding-top: 2px;
-          border-radius: 4px;
-          line-height: 34px; }
-    #work-list .card .thumb {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 9999; }
-      #work-list .card .thumb .ptit, #work-list .card .thumb .pcnt {
-        display: none; }
-  #work-list .card:hover {
-    transform: matrix(1, 0, 0, 1, 0, -58.86); }
-    #work-list .card:hover .card-area {
-      box-shadow: 0 30px 60px 0 black;
-      cursor: pointer; }
-      #work-list .card:hover .card-area .info {
-        opacity: 1; }
+.block {
+  width: 30vh;
+  height: 30vh;
+  padding: 10vh 2vh;
+  opacity: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+  transition: all .6s;
+  flex: 0 0 auto;
+  box-sizing: content-box; }
+  .block .card-area {
+    border-radius: 50%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%; }
+    .block .card-area .info {
+      opacity: 0;
+      transition: all .6s; }
+      .block .card-area .info .effect-box {
+        background: white;
+        color: #121212;
+        display: inline-block;
+        padding: 0 12px;
+        position: absolute;
+        line-height: 2em;
+        left: 0;
+        bottom: 25px;
+        font-size: 16px;
+        padding-top: 2px;
+        border-radius: 4px; }
+      .block .card-area .info .cnteffect-box {
+        background: white;
+        color: #666;
+        display: inline-block;
+        padding: 0 12px;
+        position: absolute;
+        line-height: 2em;
+        left: 0;
+        bottom: -8px;
+        font-size: 14px;
+        padding-top: 2px;
+        border-radius: 4px;
+        line-height: 34px; }
+  .block .thumb {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999; }
+    .block .thumb .ptit, .block .thumb .pcnt {
+      display: none; }
+
+.block:hover {
+  transform: matrix(1, 0, 0, 1, 0, -58.86); }
+  .block:hover .card-area {
+    box-shadow: 0 30px 60px 0 black;
+    cursor: pointer; }
+    .block:hover .card-area .info {
+      opacity: 1; }
 
 #work-content {
   display: none;

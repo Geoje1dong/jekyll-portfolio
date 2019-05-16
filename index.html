@@ -2,62 +2,109 @@
 layout: home
 title: Home
 ---
-
+<!-- 
 <div id="work-list">
-	<div id="scrolling" class="clearfix mCustomScrollbar" style="width:100vw;">
+	<div id="scrolling" class="scrolling clearfix mCustomScrollbar" style="width:100vw;">
 	</div> 
+</div> -->
+
+
+<div class="container">
 </div>
+
+	<div id="work-list">
+		<div id="scrolling" class="scrolling clearfix" style="">
+		</div> 
+	</div>
 
 <div id="work-content">
 	<div class="article">
 	</div>
 </div>
 
-<div class="log">
 
-</div>
+<!-- <link rel="stylesheet" href="{{ site.asset_url }}/css/jquery.mCustomScrollbar.css" />
+<script src="{{ site.asset_url }}/js/jquery.mCustomScrollbar.js"></script> -->
 
-<link rel="stylesheet" href="{{ site.asset_url }}/css/jquery.mCustomScrollbar.css" />
-<script src="{{ site.asset_url }}/js/jquery.mCustomScrollbar.js"></script>
+<script src="https://corentinfardeau.github.io/horizontal-scroll/index.js"></script>
 <script>
   $(document).ready(function(){
     $.ajax({
       url : "{{ site.work_url }}/work.json",
       dataType : "json",
       success : function(data){
-        var card_wrap = $('#scrolling');
+        var card_wrap = $('.container');
         var show = "";
         $.each(data,function(index, item){
-						show += '<div class="card">';
-						//show += '	<button class="thumb" onClick=abs('+(index+1)+');>';
+						show += '<div class="block">';
 						show += '	<a href="#none" class="thumb" onClick=abs('+item.ID+'); title="'+item.tit+' 포트폴리오">'
 						show += '		<p class="ptit">'+item.tit+'</p>';
 						show += '		<p class="pcnt">'+item.cnt+'</p>';
 						show += '	</a>'
-						show += '		<div class="card-area" style="background-image:url({{ site.work_url }}/img/id'+item.ID+'/card_img.jpg);">'
-						show += '				<div class="info">';
-						show += '					<p class="effect-box"></p>';
-						show += '					<p class="cnteffect-box"></p>';
-						show += '				</div>';
-						show += '		</div>'
+						show += '	<div class="card-area" style="background-image:url({{ site.work_url }}/img/id'+item.ID+'/card_img.jpg);">'
+						show += '		<div class="info">';
+						show += '			<p class="effect-box"></p>';
+						show += '			<p class="cnteffect-box"></p>';
+						show += '		</div>';
+						show += '	</div>'
 						show += '</div>';
         });
         card_wrap.append(show);
       },
 			complete: function(){
-				console.log('a');
 			},
     });
+		// $.ajax({
+    //   url : "{{ site.work_url }}/work.json",
+    //   dataType : "json",
+    //   success : function(data){
+    //     var card_wrap = $('.container');
+    //     var show = "";
+    //     $.each(data,function(index, item){
+		// 				show += '<div class="block" style="background-image:url({{ site.work_url }}/img/id'+item.ID+'/card_img.jpg);">';
+		// 				show += '	<div onClick=abs('+item.ID+')>Item '+item.ID+'</div>'
+		// 				show += '	<a href="#none" class="thumb" onClick=abs('+item.ID+'); title="'+item.tit+' 포트폴리오">'
+		// 				show += '	</a>'
+		// 				show += '	<div>Item '+item.ID+'</div>'
+		// 				show += '	<div>Item '+item.ID+'</div>'
+		// 				show += '</div>';
+    //     });
+    //     card_wrap.append(show);
+    //   },
+		// 	complete: function(){
+		// 	},
+    //});
 	});
 
 	$( document ).ajaxStop(function() {
-  	alert('b')
-		$("#scrolling").mCustomScrollbar({
-			axis:"x",
-			theme:"dark-thin",
-			autoExpandScrollbar:true,
-			advanced:{autoExpandHorizontalScroll:true, updateOnContentResize:true}
+  	console.log('b')
+
+		var blocks = document.getElementsByClassName('block');
+		var container = document.getElementsByClassName('container');
+		var hs = new HorizontalScroll.default({
+			blocks : blocks,
+			container: container,
+			isAnimated: true,
+			springEffect: 0.8
 		});
+
+		// var blocks = document.getElementsByClassName('card');
+		// 	var container = document.getElementsByClassName('container');
+		// 	var hs = new HorizontalScroll.default({
+		// 		blocks : blocks,
+		// 		container: container,
+		// 		isAnimated: true,
+		// 		springEffect: 0.8
+		// 	});
+
+
+
+		// $("#scrolling").mCustomScrollbar({
+		// 	axis:"x",
+		// 	theme:"dark-thin",
+		// 	autoExpandScrollbar:true,
+		// 	advanced:{autoExpandHorizontalScroll:true, updateOnContentResize:true}
+		// });
 	});
 
   function abs(listNumber){
