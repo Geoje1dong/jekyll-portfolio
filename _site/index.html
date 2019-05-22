@@ -15,18 +15,9 @@
 <body class="home-template">
 
 <div id="header">
-    <!-- <button id="menu-toggle" type="button">
-        <span class="sr-only">Toggle Navigation Menu</span>
-    </button>
-    <button id="search-toggle" type="button">
-        <span class="sr-only">Toggle Search Form</span>
-    </button> -->
     <a id="logo" href="/">
         KimJaeHyun :)
     </a>
-    <!-- <div id="search">
-        <input id="search-input" type="search" placeholder="Search..." value="" />
-    </div> -->
     <ul class="search__results" id="results-container"></ul>
     <ul id="menu" class="nav clearfix">
         <li class=" active "><a href="/">Work</a></li>
@@ -34,21 +25,6 @@
         <li class=""><a href="/about/">About</a></li>
     </ul>
 </div>
-<!-- Script pointing to jekyll-search.js -->
-<!-- <script src="/dest/jekyll-search.js" type="text/javascript"></script> -->
-
-<!-- <script type="text/javascript">
-    SimpleJekyllSearch({
-        searchInput: document.getElementById('search-input'),
-        resultsContainer: document.getElementById('results-container'),
-        json: '/search2.json',
-        searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
-        noResultsText: '<li>No results found</li>',
-        limit: 15,
-        fuzzy: false,
-        exclude: ['Welcome']
-    })
-</script><!-- #header -->
 
 
 <div id="wrapper">
@@ -58,29 +34,15 @@
     <p>UI / UX 디자이너 <strong>김재현</strong> 입니다.</p>
     <p>저의 <strong>포트폴리오</strong>에 오신것을 환영합니다.</p>
   </div>
-  <!-- 
-<div id="work-list">
-	<div id="scrolling" class="scrolling clearfix mCustomScrollbar" style="width:100vw;">
-	</div> 
-</div> -->
-
-
-<div class="container">
-</div>
-
-	<div id="work-list">
-		<div id="scrolling" class="scrolling clearfix" style="">
-		</div> 
+  <div stlye="position:absolute; bottom:10%;">
+	<div class="container">
 	</div>
+</div>
 
 <div id="work-content">
 	<div class="article">
 	</div>
 </div>
-
-
-<!-- <link rel="stylesheet" href="/assets/css/jquery.mCustomScrollbar.css" />
-<script src="/assets/js/jquery.mCustomScrollbar.js"></script> -->
 
 <script src="https://corentinfardeau.github.io/horizontal-scroll/index.js"></script>
 <script>
@@ -110,57 +72,17 @@
 			complete: function(){
 			},
     });
-		// $.ajax({
-    //   url : "/work/work.json",
-    //   dataType : "json",
-    //   success : function(data){
-    //     var card_wrap = $('.container');
-    //     var show = "";
-    //     $.each(data,function(index, item){
-		// 				show += '<div class="block" style="background-image:url(/work/img/id'+item.ID+'/card_img.jpg);">';
-		// 				show += '	<div onClick=abs('+item.ID+')>Item '+item.ID+'</div>'
-		// 				show += '	<a href="#none" class="thumb" onClick=abs('+item.ID+'); title="'+item.tit+' 포트폴리오">'
-		// 				show += '	</a>'
-		// 				show += '	<div>Item '+item.ID+'</div>'
-		// 				show += '	<div>Item '+item.ID+'</div>'
-		// 				show += '</div>';
-    //     });
-    //     card_wrap.append(show);
-    //   },
-		// 	complete: function(){
-		// 	},
-    //});
 	});
 
 	$( document ).ajaxStop(function() {
-  	console.log('b')
-
 		var blocks = document.getElementsByClassName('block');
 		var container = document.getElementsByClassName('container');
 		var hs = new HorizontalScroll.default({
 			blocks : blocks,
 			container: container,
-			isAnimated: true,
+			isAnimated: false,
 			springEffect: 0.8
 		});
-
-		// var blocks = document.getElementsByClassName('card');
-		// 	var container = document.getElementsByClassName('container');
-		// 	var hs = new HorizontalScroll.default({
-		// 		blocks : blocks,
-		// 		container: container,
-		// 		isAnimated: true,
-		// 		springEffect: 0.8
-		// 	});
-
-
-
-		// $("#scrolling").mCustomScrollbar({
-		// 	axis:"x",
-		// 	theme:"dark-thin",
-		// 	autoExpandScrollbar:true,
-		// 	advanced:{autoExpandHorizontalScroll:true, updateOnContentResize:true}
-		// });
 	});
 
   function abs(listNumber){
@@ -198,7 +120,7 @@
 		articleEffect(0,100);
   }
 
-	let cardList = document.querySelector('#scrolling');
+	let cardList = document.querySelector('.container');
 	let timer;
 	cardList.addEventListener("mouseover", cardOverEventHandler)
 	cardList.addEventListener("mouseout", cardOutEventHandler)

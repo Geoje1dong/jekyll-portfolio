@@ -2,29 +2,16 @@
 layout: home
 title: Home
 ---
-<!-- 
-<div id="work-list">
-	<div id="scrolling" class="scrolling clearfix mCustomScrollbar" style="width:100vw;">
-	</div> 
-</div> -->
 
-
-<div class="container">
-</div>
-
-	<div id="work-list">
-		<div id="scrolling" class="scrolling clearfix" style="">
-		</div> 
+<div stlye="position:absolute; bottom:10%;">
+	<div class="container">
 	</div>
+</div>
 
 <div id="work-content">
 	<div class="article">
 	</div>
 </div>
-
-
-<!-- <link rel="stylesheet" href="{{ site.asset_url }}/css/jquery.mCustomScrollbar.css" />
-<script src="{{ site.asset_url }}/js/jquery.mCustomScrollbar.js"></script> -->
 
 <script src="https://corentinfardeau.github.io/horizontal-scroll/index.js"></script>
 <script>
@@ -54,57 +41,17 @@ title: Home
 			complete: function(){
 			},
     });
-		// $.ajax({
-    //   url : "{{ site.work_url }}/work.json",
-    //   dataType : "json",
-    //   success : function(data){
-    //     var card_wrap = $('.container');
-    //     var show = "";
-    //     $.each(data,function(index, item){
-		// 				show += '<div class="block" style="background-image:url({{ site.work_url }}/img/id'+item.ID+'/card_img.jpg);">';
-		// 				show += '	<div onClick=abs('+item.ID+')>Item '+item.ID+'</div>'
-		// 				show += '	<a href="#none" class="thumb" onClick=abs('+item.ID+'); title="'+item.tit+' 포트폴리오">'
-		// 				show += '	</a>'
-		// 				show += '	<div>Item '+item.ID+'</div>'
-		// 				show += '	<div>Item '+item.ID+'</div>'
-		// 				show += '</div>';
-    //     });
-    //     card_wrap.append(show);
-    //   },
-		// 	complete: function(){
-		// 	},
-    //});
 	});
 
 	$( document ).ajaxStop(function() {
-  	console.log('b')
-
 		var blocks = document.getElementsByClassName('block');
 		var container = document.getElementsByClassName('container');
 		var hs = new HorizontalScroll.default({
 			blocks : blocks,
 			container: container,
-			isAnimated: true,
+			isAnimated: false,
 			springEffect: 0.8
 		});
-
-		// var blocks = document.getElementsByClassName('card');
-		// 	var container = document.getElementsByClassName('container');
-		// 	var hs = new HorizontalScroll.default({
-		// 		blocks : blocks,
-		// 		container: container,
-		// 		isAnimated: true,
-		// 		springEffect: 0.8
-		// 	});
-
-
-
-		// $("#scrolling").mCustomScrollbar({
-		// 	axis:"x",
-		// 	theme:"dark-thin",
-		// 	autoExpandScrollbar:true,
-		// 	advanced:{autoExpandHorizontalScroll:true, updateOnContentResize:true}
-		// });
 	});
 
   function abs(listNumber){
@@ -142,7 +89,7 @@ title: Home
 		articleEffect(0,100);
   }
 
-	let cardList = document.querySelector('#scrolling');
+	let cardList = document.querySelector('.container');
 	let timer;
 	cardList.addEventListener("mouseover", cardOverEventHandler)
 	cardList.addEventListener("mouseout", cardOutEventHandler)
